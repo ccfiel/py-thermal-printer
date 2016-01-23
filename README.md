@@ -1,5 +1,18 @@
-Python Thermal Printer Library
-==============================
+Python Thermal Printer Library 
+============s==================
+
+For Bananapi Board - by Chris Ian Fiel
+1. sudo apt-get install python-serial 
+2. sudo apt-get install python-imaging-tk
+3. apt-get install git-core
+4. git clone git://github.com/luopio/py-thermal-printer.git
+5. cd py-thermal-printer
+5. dmesg | grep tty    # Checkin where the printer is connected by
+6. nano printer.py     # Check the device example /dev/ttyS2 or /dev/ttyS4
+7. python printer.py
+
+Manual for the KP628C kiosk thermal printer https://drive.google.com/file/d/0B7I4fH4fCzGlTFp2NkJIWDhBQk0/view?usp=sharing
+
 
 Thermal printing library that controls the "micro panel thermal printer" sold in
 shops like Adafruit and Sparkfun (e.g. http://www.adafruit.com/products/597). 
