@@ -46,9 +46,9 @@ class ThermalPrinter(object):
     # default serial port for the Beagle Bone
     #SERIALPORT = '/dev/ttyO2'
     # this might work better on a Raspberry Pi
-    SERIALPORT = '/dev/ttyAMA0'
+    SERIALPORT = '/dev/ttyS2'
 
-    BAUDRATE = 19200
+    BAUDRATE = 115200
     TIMEOUT = 3
 
     # pixels with more color value (average for multiple channels) are counted as white
@@ -98,6 +98,14 @@ class ThermalPrinter(object):
         self.printer.write(chr(18))
         self.printer.write(chr(35))
         self.printer.write(chr((printDensity << 4) | printBreakTime))
+
+    def cut_paper_full(self):
+	self.printer.write(self._ESC)
+	self.printer.write(chr(105))
+
+    def cut_paper_half(self):
+        self.printer.write(self._ESC)
+        self.printer.write(chr(109))
 
     def reset(self):
         self.printer.write(self._ESC)
@@ -312,7 +320,7 @@ class ThermalPrinter(object):
         """
         counter = 0
         if output_png:
-            import Image, ImageDraw
+            from PIL import Image, ImageDraw
             test_img = Image.new('RGB', (384, h))
             draw = ImageDraw.Draw(test_img)
 
@@ -396,8 +404,12 @@ il inverse left
 """
     p.print_markup(markup)
 
+    for x in range(0,25):
+        p.linefeed
+    p.cut_paper_half()
+
     # runtime dependency on Python Imaging Library
-    import Image, ImageDraw
+    from PIL import Image
     i = Image.open("example-lammas.png")
     data = list(i.getdata())
     w, h = i.size
@@ -406,7 +418,7 @@ il inverse left
     p.justify("C")
     p.barcode_chr("2")
     p.barcode("014633098808")
-    p.linefeed()
-    p.linefeed()
-    p.linefeed()
-    
+
+    for x in range(0,25):
+    	p.linefeed
+    p.cut_paper_full()	
