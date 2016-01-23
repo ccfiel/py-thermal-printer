@@ -1,5 +1,5 @@
 Python Thermal Printer Library 
-============s==================
+==============================
 
 For Bananapi Board - by Chris Ian Fiel
 1. sudo apt-get install python-serial 
