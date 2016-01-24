@@ -2,6 +2,7 @@ Python Thermal Printer Library
 ==============================
 
 For Bananapi Board - by Chris Ian Fiel
+
 1. sudo apt-get install python-serial 
 2. sudo apt-get install python-imaging-tk
 3. apt-get install git-core

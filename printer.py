@@ -404,21 +404,29 @@ il inverse left
 """
     p.print_markup(markup)
 
-    for x in range(0,25):
-        p.linefeed
+    p.linefeed
+    p.linefeed
+    p.linefeed
+    p.linefeed
+    p.linefeed
+    p.linefeed
     p.cut_paper_half()
 
     # runtime dependency on Python Imaging Library
-    from PIL import Image
-    i = Image.open("example-lammas.png")
-    data = list(i.getdata())
-    w, h = i.size
-    p.print_bitmap(data, w, h, True)
-    p.linefeed()
-    p.justify("C")
-    p.barcode_chr("2")
-    p.barcode("014633098808")
+    #from PIL import Image
+    #i = Image.open("example-lammas.png")
+    #data = list(i.getdata())
+    #w, h = i.size
+    #p.print_bitmap(data, w, h, True)
+    #p.linefeed()
+    #p.justify("C")
+    #p.barcode_chr("2")
+    #p.barcode("014633098808")
 
-    for x in range(0,25):
-    	p.linefeed
-    p.cut_paper_full()	
+    #p.linefeed
+    #p.linefeed
+    #p.linefeed
+    #p.linefeed
+    #p.linefeed
+
+    #p.cut_paper_full()	
